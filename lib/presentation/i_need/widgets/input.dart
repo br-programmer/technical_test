@@ -17,7 +17,7 @@ class Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoTextField(
-      decoration: BoxDecoration(color: AppColors.blue.withOpacity(.08), borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(color: AppColors.blueLight, borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       placeholder: placeHolder,
       placeholderStyle: GoogleFonts.roboto(color: AppColors.grey, fontWeight: FontWeight.w300),

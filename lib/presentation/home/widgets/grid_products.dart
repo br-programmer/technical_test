@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:technical_test/presentation/common/fade_page_route.dart';
+import 'package:technical_test/presentation/detail/detail_page.dart';
 
 class GridProducts extends StatelessWidget {
   const GridProducts({Key key}) : super(key: key);
@@ -13,11 +15,7 @@ class GridProducts extends StatelessWidget {
         crossAxisCount: 4,
         children: List.generate(
           10,
-          (i) => Container(
-            decoration: BoxDecoration(
-                color: Colors.primaries[i % Colors.primaries.length], borderRadius: BorderRadius.circular(10)),
-            child: FittedBox(child: Text('$i')),
-          ),
+          (i) => _ItemGrid(color: Colors.primaries[i % Colors.primaries.length], text: '$i'),
         ),
         staggeredTiles: List.generate(
           10,
@@ -40,6 +38,30 @@ class GridProducts extends StatelessWidget {
         ),
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
+      ),
+    );
+  }
+}
+
+class _ItemGrid extends StatelessWidget {
+  const _ItemGrid({Key key, this.color, this.text}) : super(key: key);
+  final Color color;
+  final String text;
+
+  void _onTap(BuildContext context) {
+    Navigator.push(context, FadePageRoute(newPage: DetailPage(color: color)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _onTap(context),
+      child: Hero(
+        tag: color,
+        child: Container(
+          decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(10)),
+          child: FittedBox(child: Text(text)),
+        ),
       ),
     );
   }
