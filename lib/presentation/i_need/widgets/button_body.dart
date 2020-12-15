@@ -23,6 +23,7 @@ class ButtonBody extends StatelessWidget {
         final isCompleted = bloc.isCompleted.value;
         return MyRoundedButton(
           text: hasHowToPost ? 'Continuar' : 'Publicar',
+          padding: 15,
           onPressed: hasHowToPost
               ? () => bloc.setNewState(INeedState.createPost)
               : isCompleted

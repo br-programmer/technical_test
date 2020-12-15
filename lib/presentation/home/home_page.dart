@@ -6,8 +6,6 @@ import 'package:technical_test/presentation/home/widgets/widgets.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = Provider.of<HomeBLoC>(context, listen: false);
-    print(bloc.products);
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -23,7 +21,10 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of<HomeBLoC>(context, listen: false);
     return CustomScrollView(
+      controller: bloc.scrollController,
+      physics: ClampingScrollPhysics(),
       slivers: [
         const Header(),
         const Options(),

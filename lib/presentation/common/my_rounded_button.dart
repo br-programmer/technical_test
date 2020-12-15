@@ -10,12 +10,14 @@ class MyRoundedButton extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     @required this.onPressed,
+    this.padding = 10,
   }) : super(key: key);
 
   final String text;
   final Color backgroundColor;
   final Color textColor;
   final VoidCallback onPressed;
+  final double padding;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class MyRoundedButton extends StatelessWidget {
             ]),
         width: double.infinity,
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(vertical: 10),
+        padding: EdgeInsets.symmetric(vertical: padding),
         child: Text(
           this.text,
           style: GoogleFonts.roboto(color: textColor ?? Colors.white, fontSize: 16, fontWeight: FontWeight.w500),

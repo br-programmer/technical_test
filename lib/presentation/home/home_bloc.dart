@@ -41,7 +41,7 @@ class HomeBLoC extends ChangeNotifier {
   }
 
   void _scrollListener() {
-    if ((scrollController.offset + 250 >= scrollController.position.maxScrollExtent) &&
+    if ((scrollController.offset >= scrollController.position.maxScrollExtent) &&
         (scrollController.position.userScrollDirection == ScrollDirection.reverse) &&
         !_loading) {
       _page++;

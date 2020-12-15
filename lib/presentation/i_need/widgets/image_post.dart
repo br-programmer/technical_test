@@ -28,7 +28,7 @@ class ImagePost extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Container(
-                color: AppColors.blue.withOpacity(.1),
+                color: AppColors.blueLight,
                 child: file != null
                     ? Image.file(file, fit: BoxFit.cover)
                     : FittedBox(child: Icon(Icons.image_search, color: AppColors.greyDark)),
