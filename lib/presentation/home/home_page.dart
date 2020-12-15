@@ -6,14 +6,26 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            const Header(),
-            const Options(),
-            const GridProducts(),
-          ],
+        child: Stack(
+          children: [const _Body(), const NavBarHome()],
         ),
       ),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        const Header(),
+        const Options(),
+        const GridProducts(),
+        const SliverToBoxAdapter(child: SizedBox(height: kBottomNavigationBarHeight)),
+      ],
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:technical_test/presentation/common/app_colors.dart';
 import 'package:technical_test/presentation/common/my_rounded_button.dart';
 import 'package:technical_test/presentation/detail/widgets/widgets.dart';
