@@ -18,17 +18,17 @@ class HowToPost extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _Indication(
-            title: 'Que necesitas',
+            title: 'Que necesitas:',
             detail: 'Ingresa titulo de lo que buscas corto pero descriptivo',
           ),
           const SizedBox(height: 10),
           _Indication(
-            title: 'Categoria',
+            title: 'Categoria:',
             detail: 'Elige la categoria donde alguien pueda encontrar tu necesidad',
           ),
           const SizedBox(height: 10),
           _Indication(
-            title: 'Descripción',
+            title: 'Descripción:',
             detail:
                 'Describe tu necesidad y porque estas buscando este producto, así las personas que lo tienen entenderán porque regalartelo',
           ),
