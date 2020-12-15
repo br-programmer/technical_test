@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:technical_test/presentation/home/home_bloc.dart';
 import 'package:technical_test/presentation/home/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of<HomeBLoC>(context, listen: false);
+    print(bloc.products);
     return Scaffold(
       body: SafeArea(
         child: Stack(
