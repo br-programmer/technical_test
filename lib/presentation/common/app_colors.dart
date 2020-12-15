@@ -1,6 +1,8 @@
 import 'package:flutter/painting.dart' show Color;
 
 const duration = Duration(milliseconds: 200);
+const size = 45.0;
+const options = ['Recojer', 'Enviar', 'Valparaiso'];
 
 class AppColors {
   static final blue = Color(0xFF3F90F6);

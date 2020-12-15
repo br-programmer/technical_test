@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:technical_test/presentation/home/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          // child: Icon(Icons.slider)
-          ),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            const Header(),
+            const Options(),
+          ],
+        ),
+      ),
     );
   }
 }
