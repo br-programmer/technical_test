@@ -46,14 +46,14 @@ class _Indication extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = GoogleFonts.roboto(color: AppColors.greyDark, fontWeight: FontWeight.w300, fontSize: 16.5);
+    final style = GoogleFonts.roboto(color: AppColors.greyDark, fontWeight: FontWeight.w400, fontSize: 16.5);
     return RichText(
       textAlign: TextAlign.justify,
       text: TextSpan(
         text: '$title ',
-        style: style.copyWith(fontWeight: FontWeight.w700),
+        style: style.copyWith(fontWeight: FontWeight.w800),
         children: [
-          TextSpan(text: detail, style: style),
+          TextSpan(text: detail, style: style.copyWith(color: AppColors.grey)),
         ],
       ),
     );

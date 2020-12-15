@@ -81,7 +81,7 @@ class _Content extends StatelessWidget {
         valueListenable: bloc.state,
         builder: (_, state, __) => AnimatedSwitcher(
           duration: duration,
-          child: (state == INeedState.howToPost) ? const HowToPost() : Container(),
+          child: (state == INeedState.howToPost) ? const HowToPost() : const CreatePost(),
         ),
       ),
     );

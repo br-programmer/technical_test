@@ -43,7 +43,7 @@ class INeedBLoC extends ChangeNotifier {
   void _hasCompleted() {
     if (_controllerNeed.text.length > 5 &&
         _controllerDescription.text.length > 15 &&
-        _file != null &&
+        _file.value != null &&
         !_isCompleted.value) {
       _isCompleted.value = true;
     } else if (_isCompleted.value) {
