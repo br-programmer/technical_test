@@ -13,13 +13,11 @@ class Header extends StatelessWidget {
     return SliverPersistentHeader(
       floating: true,
       delegate: SliverCustomHeaderDelegate(
-        minHeight: 50,
-        maxHeight: 50,
+        minHeight: 60,
+        maxHeight: 60,
         child: Container(
           color: Theme.of(context).scaffoldBackgroundColor,
-          child: Row(
-            children: [const _Search(), const _Filter()],
-          ),
+          child: Row(children: [const _Search(), const _Filter()]),
         ),
       ),
     );
@@ -31,23 +29,23 @@ class _Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myStyle = GoogleFonts.roboto(color: AppColors.greyLight, fontSize: 15);
     return Expanded(
       child: Container(
         padding: const EdgeInsets.only(left: 10),
         height: size,
         child: CupertinoTextField(
-          decoration: BoxDecoration(
-            border: Border.all(color: AppColors.blue, width: 1.25),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          prefix: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: RotatedBox(quarterTurns: 1, child: Icon(Icons.search, color: AppColors.blue)),
-          ),
-          placeholder: 'Que deseas buscar?',
-          placeholderStyle: GoogleFonts.roboto(color: AppColors.grey, fontSize: 15),
-          style: GoogleFonts.roboto(color: AppColors.greyDark, fontSize: 15),
-        ),
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.blue, width: 1.25),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            prefix: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: RotatedBox(quarterTurns: 1, child: Icon(Icons.search, color: AppColors.blue)),
+            ),
+            placeholder: 'Que deseas buscar?',
+            placeholderStyle: myStyle,
+            style: myStyle.copyWith(color: AppColors.greyDark)),
       ),
     );
   }

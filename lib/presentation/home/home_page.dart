@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
           slivers: [
             const Header(),
             const Options(),
+            const GridProducts(),
           ],
         ),
       ),

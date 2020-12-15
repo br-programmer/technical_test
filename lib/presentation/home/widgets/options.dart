@@ -10,7 +10,7 @@ class Options extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(children: options.map((e) => _ItemOptions(text: e)).toList()),
       ),
     );
