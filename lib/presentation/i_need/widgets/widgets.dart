@@ -6,3 +6,4 @@ export 'package:technical_test/presentation/i_need/widgets/create_post.dart';
 export 'package:technical_test/presentation/i_need/widgets/options_select_image.dart';
 export 'package:technical_test/presentation/i_need/widgets/input.dart';
 export 'package:technical_test/presentation/i_need/widgets/image_post.dart';
+export 'package:technical_test/presentation/i_need/widgets/loading.dart';

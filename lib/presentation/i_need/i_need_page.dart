@@ -12,10 +12,10 @@ class INeedPage extends StatelessWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         body: SafeArea(
-          child: Column(
+          child: Stack(
             children: [
-              const MyAppBar(),
-              const _Body(),
+              Column(children: [const MyAppBar(), const _Body()]),
+              const Loading(color: Colors.black38),
             ],
           ),
         ),
