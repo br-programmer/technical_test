@@ -18,7 +18,7 @@ class CreatePost extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('¡Publica tu necesidad!',
-              style: GoogleFonts.poppins(fontWeight: FontWeight.w600, color: AppColors.greyDark, fontSize: 18)),
+              style: GoogleFonts.poppins(fontWeight: FontWeight.w600, color: AppColors.greyDark, fontSize: 20)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Text('Completa los campos como lo indica la pantalla anterior para publicar lo que necesites',

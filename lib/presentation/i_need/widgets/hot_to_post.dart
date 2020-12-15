@@ -14,7 +14,7 @@ class HowToPost extends StatelessWidget {
           Expanded(child: Image.asset('assets/images/need.png')),
           Text(
             '¡Como publicar tu necesidad!',
-            style: GoogleFonts.poppins(color: AppColors.greyDark, fontWeight: FontWeight.w600, fontSize: 18),
+            style: GoogleFonts.poppins(color: AppColors.greyDark, fontWeight: FontWeight.w600, fontSize: 20),
           ),
           const SizedBox(height: 15),
           _Indication(

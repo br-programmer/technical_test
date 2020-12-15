@@ -11,10 +11,11 @@ class HomeBLoC extends ChangeNotifier {
   ValueNotifier<List<Product>> _products;
   Product _product;
   ScrollController _scrollController;
-  bool _loading;
+  ValueNotifier<bool> _loading;
   ValueNotifier<List<Product>> get products => _products;
   Product get product => _product;
   ScrollController get scrollController => _scrollController;
+  ValueNotifier<bool> get loading => _loading;
 
   HomeBLoC({@required this.apiRepositoryInterface}) {
     _init();
@@ -23,27 +24,27 @@ class HomeBLoC extends ChangeNotifier {
   void _init() {
     _products = ValueNotifier<List<Product>>([]);
     _product = Product();
-    _loading = true;
+    _loading = ValueNotifier<bool>(true);
     _scrollController = ScrollController();
     _scrollController?.addListener(_scrollListener);
     _loadData();
   }
 
   Future<void> _loadData() async {
-    _loading = true;
+    _loading.value = true;
     final response = await apiRepositoryInterface.getProducts(ProductRequest(page: _page, limit: 7));
     final tmp = List<Product>.from(_products.value);
     if (response != null) {
       tmp.addAll(response.products);
       _products.value = tmp;
     }
-    _loading = false;
+    _loading.value = false;
   }
 
   void _scrollListener() {
-    if ((scrollController.offset >= scrollController.position.maxScrollExtent) &&
+    if ((scrollController.offset + 50 >= scrollController.position.maxScrollExtent) &&
         (scrollController.position.userScrollDirection == ScrollDirection.reverse) &&
-        !_loading) {
+        !_loading.value) {
       _page++;
       _loadData();
     }

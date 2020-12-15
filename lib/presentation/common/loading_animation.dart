@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:technical_test/presentation/common/app_colors.dart';
 
 class LoadingAnimation extends StatefulWidget {
-  const LoadingAnimation({Key key, @required this.radius}) : super(key: key);
+  const LoadingAnimation({Key key, @required this.radius, this.alignment = Alignment.center}) : super(key: key);
   final double radius;
+  final Alignment alignment;
 
   @override
   _LoadingAnimationState createState() => _LoadingAnimationState();
@@ -37,6 +38,7 @@ class _LoadingAnimationState extends State<LoadingAnimation> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Align(
+      alignment: widget.alignment,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: AnimatedBuilder(
