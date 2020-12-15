@@ -1,5 +1,7 @@
 import 'package:flutter/painting.dart' show Color;
 
+const duration = Duration(milliseconds: 200);
+
 class AppColors {
   static final blue = Color(0xFF3F90F6);
   static final orange = Color(0xFFED8306);
