@@ -41,11 +41,11 @@ class INeedBLoC extends ChangeNotifier {
   void _listenerDescription() => _hasCompleted();
 
   void _hasCompleted() {
-    if (_controllerNeed.text.length > 5 &&
-        _controllerDescription.text.length > 15 &&
-        _file.value != null &&
-        !_isCompleted.value) {
-      _isCompleted.value = true;
+    print(_controllerDescription.text.length);
+    if (_controllerNeed.text.length > 5 && _controllerDescription.text.length > 15 && _file.value != null) {
+      if (!_isCompleted.value) {
+        _isCompleted.value = true;
+      }
     } else if (_isCompleted.value) {
       _isCompleted.value = false;
     }
