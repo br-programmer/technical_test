@@ -19,6 +19,7 @@ dependencies:
   image_picker: ^0.6.7+15
   cached_network_image: ^2.4.1
   dio: ^3.0.10
+  font_awesome_flutter: ^8.10.1
 
 dev_dependencies:
   flutter_test:
