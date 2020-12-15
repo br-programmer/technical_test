@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:technical_test/presentation/common/my_rounded_button.dart';
+import 'package:technical_test/presentation/i_need/i_need_bloc.dart';
 
 class ButtonBody extends StatelessWidget {
   const ButtonBody({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MyRoundedButton(
-      text: 'Continuar',
-      onPressed: () {},
+    final bloc = Provider.of<INeedBLoC>(context, listen: false);
+    return AnimatedBuilder(
+      animation: Listenable.merge([bloc.state, bloc.isCompleted]),
+      builder: (_, __) {
+        final hasHowToPost = (bloc.state.value == INeedState.howToPost);
+        final isCompleted = bloc.isCompleted.value;
+        return MyRoundedButton(
+          text: hasHowToPost ? 'Continuar' : 'Publicar',
+          onPressed: hasHowToPost
+              ? () => bloc.setNewState(INeedState.createPost)
+              : isCompleted
+                  ? () {}
+                  : null,
+        );
+      },
     );
   }
 }

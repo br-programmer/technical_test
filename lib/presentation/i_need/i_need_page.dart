@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:technical_test/presentation/common/app_colors.dart';
+import 'package:technical_test/presentation/i_need/i_need_bloc.dart';
 import 'package:technical_test/presentation/i_need/widgets/widgets.dart';
 
 class INeedPage extends StatelessWidget {
@@ -73,7 +75,16 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: HowToPost());
+    final bloc = Provider.of<INeedBLoC>(context, listen: false);
+    return Expanded(
+      child: ValueListenableBuilder<INeedState>(
+        valueListenable: bloc.state,
+        builder: (_, state, __) => AnimatedSwitcher(
+          duration: duration,
+          child: (state == INeedState.howToPost) ? const HowToPost() : Container(),
+        ),
+      ),
+    );
   }
 }
 
@@ -82,9 +93,16 @@ class _HeaderBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Paso 1 de 2',
-      style: GoogleFonts.poppins(color: AppColors.greyDark, fontSize: 17, fontWeight: FontWeight.w600),
+    final bloc = Provider.of<INeedBLoC>(context, listen: false);
+    return ValueListenableBuilder<INeedState>(
+      valueListenable: bloc.state,
+      builder: (_, state, __) {
+        final step = (state == INeedState.howToPost) ? '1' : '2';
+        return Text(
+          'Paso $step de 2',
+          style: GoogleFonts.poppins(color: AppColors.greyDark, fontSize: 17, fontWeight: FontWeight.w600),
+        );
+      },
     );
   }
 }

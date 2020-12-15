@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:technical_test/presentation/common/app_colors.dart';
+import 'package:technical_test/presentation/i_need/i_need_bloc.dart';
 
 class MyCustomSteeps extends StatelessWidget {
   const MyCustomSteeps({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of<INeedBLoC>(context, listen: false);
     final child = Icon(Icons.check, size: 15, color: Colors.white);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
@@ -14,7 +17,16 @@ class MyCustomSteeps extends StatelessWidget {
         children: [
           _MyStep(color: AppColors.blue, child: child),
           const _SeparatorMyStep(),
-          _MyStep(color: AppColors.greyLight, child: null),
+          ValueListenableBuilder<INeedState>(
+            valueListenable: bloc.state,
+            builder: (_, state, __) {
+              final hasHowToPost = (state == INeedState.howToPost);
+              return _MyStep(
+                color: hasHowToPost ? AppColors.greyLight : AppColors.blue,
+                child: hasHowToPost ? null : child,
+              );
+            },
+          ),
         ],
       ),
     );
@@ -26,13 +38,24 @@ class _SeparatorMyStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: duration,
-      width: 55,
-      height: 2,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [AppColors.blue, AppColors.greyLight]),
-      ),
+    final bloc = Provider.of<INeedBLoC>(context, listen: false);
+    return ValueListenableBuilder<INeedState>(
+      valueListenable: bloc.state,
+      builder: (_, state, __) {
+        return AnimatedContainer(
+          duration: duration,
+          width: 60,
+          height: 2,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppColors.blue,
+                (state == INeedState.howToPost) ? AppColors.greyLight : AppColors.blue,
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
